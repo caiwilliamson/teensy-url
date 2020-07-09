@@ -9,7 +9,7 @@ class UrlValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     if value.present? && self.class.compliant?(value)
       if Url.find_by(slug: URI(value).path.split('/').last)
-        record.errors[attribute] << (options[:message] || "is already a shortened")
+        record.errors[attribute] << (options[:message] || "is already a shortened url")
       end
     else
       record.errors[attribute] << (options[:message] || "is not a valid url")
