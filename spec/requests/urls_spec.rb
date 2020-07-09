@@ -32,5 +32,13 @@ RSpec.describe "Urls Request Spec", type: :request do
       expect(response.body).to include("https://website.com")
       expect(response.body).to include(existing_url.original)
     end
+
+    it "does not create a url with invalid parameters" do
+      post urls_path, params: { url: { long_url: "@(*&)&!)£@£&£*@)" } }
+
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("is not a valid url")
+      expect(response.body).to include(existing_url.original)
+    end
   end
 end

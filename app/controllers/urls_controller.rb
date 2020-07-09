@@ -27,7 +27,8 @@ class UrlsController < ApplicationController
     if @url.save
       redirect_to urls_path, notice: 'Url was successfully created.'
     else
-      render :new
+      @urls = Url.all
+      render :index
     end
   end
 
