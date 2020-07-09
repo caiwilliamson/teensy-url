@@ -10,7 +10,8 @@ class Url < ApplicationRecord
     "#{Rails.application.credentials[:root_url]}/#{self.slug}"
   end
 
-  def create_slug
-    self.slug = SecureRandom.uuid[0..5] if self.slug.blank?
-  end
+  private
+    def create_slug
+      self.slug = SecureRandom.uuid[0..5] if self.slug.blank?
+    end
 end
