@@ -3,7 +3,7 @@ class Url < ApplicationRecord
 
   before_validation :create_slug
 
-  validates :original, presence: true
+  validates :original, presence: true, url: true
   validates :slug, presence: true, uniqueness: true, format: { with: SLUG_REGEX }
 
   def create_slug

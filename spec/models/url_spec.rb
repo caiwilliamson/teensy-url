@@ -8,6 +8,20 @@ RSpec.describe Url, type: :model do
     expect(url).to_not be_valid
   end
 
+  it "is not valid with an invalid original url" do
+    url = Url.create(original: "@(*&)&!)£@£&£*@)")
+    url2 = Url.create(original: "https:/website.com")
+    url3 = Url.create(original: "htps://website.com")
+    url4 = Url.create(original: "website")
+    url5 = Url.create(original: "")
+
+    expect(url).to_not be_valid
+    expect(url2).to_not be_valid
+    expect(url3).to_not be_valid
+    expect(url4).to_not be_valid
+    expect(url5).to_not be_valid
+  end
+
   context "with a valid original url" do
     let(:url) { Url.create(original: "https://website.com") }
 
