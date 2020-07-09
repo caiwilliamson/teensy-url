@@ -44,7 +44,7 @@ RSpec.describe "Urls Request Spec", type: :request do
 
   describe "SHOW /urls/:slug" do
     it "redirects to the original url" do
-      get existing_url.short_url
+      get existing_url.short
 
       expect(response).to redirect_to(existing_url.original)
       follow_redirect!

@@ -6,7 +6,7 @@ class Url < ApplicationRecord
   validates :original, presence: true, url: true
   validates :slug, presence: true, uniqueness: true, format: { with: SLUG_REGEX }
 
-  def short_url
+  def short
     "#{Rails.application.credentials[:root_url]}/#{self.slug}"
   end
 
