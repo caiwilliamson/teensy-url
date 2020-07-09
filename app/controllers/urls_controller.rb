@@ -14,15 +14,6 @@ class UrlsController < ApplicationController
     render 'static/url_not_found', status: :not_found
   end
 
-  # GET /urls/new
-  def new
-    @url = Url.new
-  end
-
-  # GET /urls/1/edit
-  def edit
-  end
-
   # POST /urls
   def create
     @url = Url.new(url_params)
@@ -32,15 +23,6 @@ class UrlsController < ApplicationController
     else
       @urls = Url.all
       render :index
-    end
-  end
-
-  # PATCH/PUT /urls/1
-  def update
-    if @url.update(url_params)
-      redirect_to @url, notice: 'Url was successfully updated.'
-    else
-      render :edit
     end
   end
 
