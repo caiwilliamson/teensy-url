@@ -8,7 +8,7 @@ RSpec.describe Url, type: :model do
     expect(url).to_not be_valid
   end
 
-  context "with a valid orignal url" do
+  context "with a valid original url" do
     let(:url) { Url.create(original: "https://website.com") }
 
     it "is valid" do
