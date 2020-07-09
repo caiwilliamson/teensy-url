@@ -4,6 +4,7 @@ class UrlsController < ApplicationController
   # GET /urls
   def index
     @urls = Url.all
+    @url = Url.new
   end
 
   # GET /urls/1

@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :original %>
-    <%= form.text_area :original %>
+    <%= form.label :original, 'URL' %>
+    <%= form.text_field :original %>
   </div>
 
   <div class="field">
-    <%= form.label :slug %>
+    <%= form.label :slug, 'Custom slug (optional)' %>
     <%= form.text_field :slug %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Shorten' %>
   </div>
 <% end %>
