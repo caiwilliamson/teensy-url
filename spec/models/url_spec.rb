@@ -55,4 +55,11 @@ RSpec.describe Url, type: :model do
     expect(url1).to be_valid
     expect(url2).to_not be_valid
   end
+
+  it "is not valid if the original url is an existing short url" do
+    url = Url.create(original: "https://website.com")
+    url2 = Url.new(original: url.short_url)
+
+    expect(url2).to_not be_valid
+  end
 end
