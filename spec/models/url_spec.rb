@@ -12,5 +12,11 @@ RSpec.describe Url, type: :model do
     it "is valid" do
       expect(url).to be_valid
     end
+
+    it "has a unique slug" do
+      url2 = Url.create(original: "https://website.com")
+
+      expect(url.slug).to_not eq(url2.slug)
+    end
   end
 end
