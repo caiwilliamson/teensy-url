@@ -10,7 +10,8 @@ class UrlsController < ApplicationController
   # GET /urls/1
   def show
     url = Url.find_by(slug: params[:slug])
-    redirect_to url.original
+    redirect_to url.original and return if url
+    render 'static/url_not_found', status: :not_found
   end
 
   # GET /urls/new

@@ -50,5 +50,12 @@ RSpec.describe "Urls Request Spec", type: :request do
       follow_redirect!
       expect(response).to have_http_status(200)
     end
+
+    it "renders an error page if the short url does not exist" do
+      get "/this-slug-does-not-exist"
+
+      expect(response).to have_http_status(404)
+      expect(response.body).to include("Error: URL not found!")
+    end
   end
 end
