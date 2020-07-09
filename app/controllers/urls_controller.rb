@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:show, :edit, :update, :destroy]
+  before_action :set_url, only: :destroy
 
   # GET /urls
   def index
@@ -9,6 +9,8 @@ class UrlsController < ApplicationController
 
   # GET /urls/1
   def show
+    url = Url.find_by(slug: params[:slug])
+    redirect_to url.original
   end
 
   # GET /urls/new
