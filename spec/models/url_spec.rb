@@ -19,4 +19,12 @@ RSpec.describe Url, type: :model do
       expect(url.slug).to_not eq(url2.slug)
     end
   end
+
+  it "is not valid if the slug is already taken" do
+    url1 = Url.create(original: "https://website.com", slug: "abcde")
+    url2 = Url.create(original: "https://website.com", slug: "abcde")
+
+    expect(url1).to be_valid
+    expect(url2).to_not be_valid
+  end
 end
