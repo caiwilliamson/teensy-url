@@ -7,8 +7,7 @@ class Url < ApplicationRecord
   validates :slug, presence: true, uniqueness: true, format: { with: SLUG_REGEX }
 
   def short
-    # I should use an environment variable for this (ran out of time).
-    "http://localhost:3000/#{self.slug}"
+    "#{Rails.application.config.root_url}/#{self.slug}"
   end
 
   private
